@@ -4,13 +4,15 @@ Advanced ansible
 I've set this up to use independant roles for each part of the deployment. This allows the code to be reusable on your own servers.
 
 To use this code, first clone the repo:
-```` git clone ...````
-
+````
+$ git clone https://github.com/dmccuk/advanced_ansible_web.git
+````
 then, create the following files:
 
  * ansible.cfg
  * deploy.yaml
-See belof for the setup
+
+Setup them up as below (an example playbook run using the roles is at the bottom of the page):
 
 ### ansible.cfg setup
 Add the following into your ````ansible.cfg```` configuration file under [default]:
