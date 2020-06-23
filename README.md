@@ -13,9 +13,7 @@ ansible_managed = # Ansible managed file. DO NOT EDIT.
 
 This will set the template header in the .j2 templates.
 
-deploy.yaml
-===========
-
+### deploy.yaml
 To run the playbooks, setup the deploy.yaml like this:
 
 <details>
@@ -50,9 +48,7 @@ To run the playbooks, setup the deploy.yaml like this:
 ````
 </p></details>
 
-Install galaxy role using requirements.yml
-==========================================
-
+### Install galaxy role using requirements.yml
 Example requirements file:
 ````
 ---
@@ -62,8 +58,7 @@ roles:
     version: 2.2.1
 ````
 
-Example install
-===============
+### Example install
 ````
 $ ansible-galaxy install -r requirements.yml
 - downloading role 'postgresql', owned by geerlingguy
