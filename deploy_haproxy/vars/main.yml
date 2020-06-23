@@ -1,0 +1,3 @@
+---
+# vars file for dmccuk-webserver
+haproxy_bind_port: 81

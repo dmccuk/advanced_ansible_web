@@ -1,0 +1,7 @@
+---
+# handlers file for dmccuk-webserver
+- name: restart tomcat
+  service:
+    name: tomcat
+    state: restarted
+
