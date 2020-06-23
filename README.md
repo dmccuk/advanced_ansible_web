@@ -3,9 +3,8 @@ Advanced ansible
 
 I've set this up to use independant roles for each part of the deployment. This allows the code to be reusable on your own servers.
 
-ansible.cfg setup
-=================
 
+### ansible.cfg setup
 Add the following into your ````ansible.cfg```` configuration file:
 
 ````
@@ -54,7 +53,7 @@ To run the playbooks, setup the deploy.yaml like this:
 Install galaxy role using requirements.yml
 ==========================================
 
-example requirements file:
+Example requirements file:
 ````
 ---
 roles:
@@ -63,7 +62,7 @@ roles:
     version: 2.2.1
 ````
 
-example install
+Example install
 ===============
 ````
 $ ansible-galaxy install -r requirements.yml
