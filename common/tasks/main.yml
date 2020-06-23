@@ -13,9 +13,24 @@
 #   Bare variables
 #   No use of handlers
 
+- name: enable sudo without tty for some ansible commands
+  replace:
+    path: /etc/sudoers
+    regexp: '^Defaults\s*requiretty'
+    replace: 'Defaults  !requiretty'
+    backup: yes
+
 - name: enable repos
   template:
     src: templates/open_three-tier-app.repo
     dest: /etc/yum.repos.d/open_three-tier-app.repo
     mode: 0644
 
+- name: install base tools and packages
+  yum:
+    name: "{{ packages }}" 
+    state: latest
+  vars:
+    packages:
+    - httpie
+    - python-pip

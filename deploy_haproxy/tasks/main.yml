@@ -13,14 +13,12 @@
 #   Bare variables
 #   No use of handlers
 
-- name: install HAProxy & HTTPD
+- name: install HAProxy
   yum:
     name: "{{ packages }}"
     state: latest
   vars:
     packages:
-    - httpd
-    - httpd-tools
     - haproxy
 
 
