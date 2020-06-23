@@ -69,6 +69,21 @@ $ ansible-galaxy install -r requirements.yml
 ````
 
 ### Ansible run of the roles:
+This was performed after a reboot of all the servers:
+
+````
+$ ansible -i hosts all -m shell -a 'uptime'
+frontend1 | CHANGED | rc=0 >>
+ 09:45:20 up 4 min,  1 user,  load average: 0.03, 0.05, 0.03
+appdb1 | CHANGED | rc=0 >>
+ 09:45:20 up 4 min,  1 user,  load average: 0.06, 0.12, 0.05
+support1 | CHANGED | rc=0 >>
+ 09:45:20 up 4 min,  1 user,  load average: 0.00, 0.02, 0.02
+app2 | CHANGED | rc=0 >>
+ 09:45:20 up 4 min,  1 user,  load average: 0.24, 0.21, 0.10
+app1 | CHANGED | rc=0 >>
+ 09:45:21 up 4 min,  1 user,  load average: 0.04, 0.09, 0.05
+````
 
 <details>
  <summary>expand to see the run output</summary>
