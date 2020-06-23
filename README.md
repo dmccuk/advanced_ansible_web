@@ -10,7 +10,6 @@ Add the following into your ````ansible.cfg```` configuration file:
 
 ````
 ansible_managed = # Ansible managed file. DO NOT EDIT.
-
 ````
 
 This will set the template header in the .j2 templates.
