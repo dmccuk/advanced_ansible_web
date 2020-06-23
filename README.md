@@ -37,25 +37,26 @@ To run the playbooks, setup the deploy.yaml like this:
   gather_facts: false # remove later! speeds up testing
   become: true
   roles:
-    - advanced_ansible_web/common
+    - {name: advanced_ansible_web/common, tags: common}
 
 - hosts: frontends
   gather_facts: false # remove later! speeds up testing
   become: true
   roles:
-    - advanced_ansible_web/deploy_haproxy
+    - {name: advanced_ansible_web/deploy_haproxy, tags: deploy_haproxy}
 
 - hosts: apps
   gather_facts: false
   become: true
   roles:
-    - advanced_ansible_web/deploy_tomcat
-    - advanced_ansible_web/deploy_apache
+    - {name: advanced_ansible_web/deploy_tomcat, tags: deploy_tomcat}
+    - {name: advanced_ansible_web/deploy_apache, tags: deploy_apache}
 
 - hosts: appdbs
   become: true
   roles:
-    - advanced_ansible_web/geerlingguy.postgresql
+    - {name: advanced_ansible_web/geerlingguy.postgresql, tags: postgresql}
+
 
 ````
 </p></details>
