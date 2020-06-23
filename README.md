@@ -11,6 +11,7 @@ then, create the following files:
 
  * ansible.cfg
  * deploy.yaml
+ * host inventory (you will need to supply this)
 
 Setup them up as below (an example playbook run using the roles is at the bottom of the page):
 
