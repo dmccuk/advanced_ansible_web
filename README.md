@@ -3,9 +3,17 @@ Advanced ansible
 
 I've set this up to use independant roles for each part of the deployment. This allows the code to be reusable on your own servers.
 
+To use this code, first clone the repo:
+```` git clone ...````
+
+then, create the following files:
+
+ * ansible.cfg
+ * deploy.yaml
+See belof for the setup
 
 ### ansible.cfg setup
-Add the following into your ````ansible.cfg```` configuration file:
+Add the following into your ````ansible.cfg```` configuration file under [default]:
 
 ````
 ansible_managed = # Ansible managed file. DO NOT EDIT.
