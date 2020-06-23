@@ -51,3 +51,26 @@ To run the playbooks, setup the deploy.yaml like this:
     - geerlingguy.postgresql
 ````
 </p></details>
+
+Install galaxy role using requirements.yml
+==========================================
+
+example requirements file:
+````
+---
+roles:
+  # Install role from ansible-galaxy
+  - name: geerlingguy.postgresql
+    version: 2.2.1
+````
+
+example install
+===============
+````
+$ ansible-galaxy install -r requirements.yml
+- downloading role 'postgresql', owned by geerlingguy
+- downloading role from https://github.com/geerlingguy/ansible-role-postgresql/archive/2.2.1.tar.gz
+- extracting geerlingguy.postgresql to /home/student1/.ansible/roles/geerlingguy.postgresql
+- geerlingguy.postgresql (2.2.1) was installed successfully
+
+````
