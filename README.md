@@ -80,10 +80,10 @@ $ ansible-playbook deploy.yml
 PLAY [all] ************************************************************************************************************************
 
 TASK [common : enable repos] ******************************************************************************************************
-ok: [app2]
-ok: [app1]
-ok: [appdb1]
 ok: [support1]
+ok: [app1]
+ok: [app2]
+ok: [appdb1]
 ok: [frontend1]
 
 PLAY [frontends] ******************************************************************************************************************
@@ -97,24 +97,24 @@ ok: [frontend1]
 PLAY [apps] ***********************************************************************************************************************
 
 TASK [deploy_tomcat : install tomcat] *********************************************************************************************
-ok: [app2]
 ok: [app1]
+ok: [app2]
 
 TASK [deploy_tomcat : enable & start tomcat at boot] ******************************************************************************
-ok: [app2]
 ok: [app1]
+ok: [app2]
 
 TASK [deploy_tomcat : create ansible tomcat directory] ****************************************************************************
-ok: [app2]
 ok: [app1]
+ok: [app2]
 
 TASK [deploy_tomcat : create ansible tomcat directory] ****************************************************************************
-ok: [app2]
 ok: [app1]
+ok: [app2]
 
 TASK [deploy_tomcat : copy static index.html to tomcat webapps/ROOT/index.html] ***************************************************
-ok: [app1]
 ok: [app2]
+ok: [app1]
 
 TASK [deploy_tomcat : copy static index.html to tomcat webapps/ansible/index.html] ************************************************
 ok: [app1]
@@ -203,7 +203,7 @@ TASK [geerlingguy.postgresql : Configure host based authentication (if entries a
 ok: [appdb1]
 
 TASK [geerlingguy.postgresql : Ensure PostgreSQL unix socket dirs exist.] *********************************************************
-changed: [appdb1] => (item=/var/run/postgresql)
+ok: [appdb1] => (item=/var/run/postgresql)
 
 TASK [geerlingguy.postgresql : Ensure PostgreSQL is started and enabled on boot.] *************************************************
 ok: [appdb1]
@@ -215,7 +215,7 @@ TASK [geerlingguy.postgresql : Ensure PostgreSQL databases are present.] *******
 PLAY RECAP ************************************************************************************************************************
 app1                       : ok=9    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 app2                       : ok=9    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-appdb1                     : ok=23   changed=1    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0
+appdb1                     : ok=23   changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0
 frontend1                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 support1                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ````
