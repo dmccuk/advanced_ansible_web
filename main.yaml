@@ -1,0 +1,25 @@
+---
+- hosts: all
+  gather_facts: false # remove later! speeds up testing
+  become: true
+  roles:
+    - {name: advanced_ansible_web/common, tags: common}
+
+- hosts: frontends
+  gather_facts: false # remove later! speeds up testing
+  become: true
+  roles:
+    - {name: advanced_ansible_web/deploy_haproxy, tags: deploy_haproxy}
+
+- hosts: apps
+  gather_facts: false
+  become: true
+  roles:
+    - {name: advanced_ansible_web/deploy_tomcat, tags: deploy_tomcat}
+    - {name: advanced_ansible_web/deploy_apache, tags: deploy_apache}
+
+- hosts: appdbs
+  become: true
+  roles:
+    - {name: advanced_ansible_web/geerlingguy.postgresql, tags: postgresql}
+
