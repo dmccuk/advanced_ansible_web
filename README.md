@@ -1,5 +1,5 @@
-advanced_ansible_web
-====================
+Advanced ansible
+================
 
 I've set this up to use independant roles for each part of the deployment. This allows the code to be reusable on your own servers.
 
