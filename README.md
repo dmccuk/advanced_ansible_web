@@ -17,7 +17,7 @@ This will set the template header in the .j2 templates.
 To run the playbooks, setup the deploy.yaml like this:
 
 <details>
- <summary>deploy.yaml</summary>
+ <summary>expand for output</summary>
   <p>
     
 ````
@@ -67,3 +67,156 @@ $ ansible-galaxy install -r requirements.yml
 - geerlingguy.postgresql (2.2.1) was installed successfully
 
 ````
+
+### Ansible run of the roles:
+
+<details>
+ <summary>expand to see the run output</summary>
+  <p>
+
+````
+$ ansible-playbook deploy.yml
+
+PLAY [all] ************************************************************************************************************************
+
+TASK [common : enable repos] ******************************************************************************************************
+ok: [app2]
+ok: [app1]
+ok: [appdb1]
+ok: [support1]
+ok: [frontend1]
+
+PLAY [frontends] ******************************************************************************************************************
+
+TASK [deploy_haproxy : install HAProxy & HTTPD] ***********************************************************************************
+ok: [frontend1]
+
+TASK [deploy_haproxy : configure haproxy] *****************************************************************************************
+ok: [frontend1]
+
+PLAY [apps] ***********************************************************************************************************************
+
+TASK [deploy_tomcat : install tomcat] *********************************************************************************************
+ok: [app2]
+ok: [app1]
+
+TASK [deploy_tomcat : enable & start tomcat at boot] ******************************************************************************
+ok: [app2]
+ok: [app1]
+
+TASK [deploy_tomcat : create ansible tomcat directory] ****************************************************************************
+ok: [app2]
+ok: [app1]
+
+TASK [deploy_tomcat : create ansible tomcat directory] ****************************************************************************
+ok: [app2]
+ok: [app1]
+
+TASK [deploy_tomcat : copy static index.html to tomcat webapps/ROOT/index.html] ***************************************************
+ok: [app1]
+ok: [app2]
+
+TASK [deploy_tomcat : copy static index.html to tomcat webapps/ansible/index.html] ************************************************
+ok: [app1]
+ok: [app2]
+
+TASK [deploy_apache : install apache] *********************************************************************************************
+ok: [app1]
+ok: [app2]
+
+TASK [deploy_apache : enable apache at boot & Start] ******************************************************************************
+ok: [app1]
+ok: [app2]
+
+PLAY [appdbs] *********************************************************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************
+ok: [appdb1]
+
+TASK [geerlingguy.postgresql : include_tasks] *************************************************************************************
+included: /home/student1/web_role/roles/geerlingguy.postgresql/tasks/variables.yml for appdb1
+
+TASK [geerlingguy.postgresql : Include OS-specific variables (Debian).] ***********************************************************
+skipping: [appdb1]
+
+TASK [geerlingguy.postgresql : Include OS-specific variables (RedHat).] ***********************************************************
+ok: [appdb1]
+
+TASK [geerlingguy.postgresql : Include OS-specific variables (Fedora).] ***********************************************************
+skipping: [appdb1]
+
+TASK [geerlingguy.postgresql : Define postgresql_packages.] ***********************************************************************
+ok: [appdb1]
+
+TASK [geerlingguy.postgresql : Define postgresql_version.] ************************************************************************
+ok: [appdb1]
+
+TASK [geerlingguy.postgresql : Define postgresql_daemon.] *************************************************************************
+ok: [appdb1]
+
+TASK [geerlingguy.postgresql : Define postgresql_data_dir.] ***********************************************************************
+ok: [appdb1]
+
+TASK [geerlingguy.postgresql : Define postgresql_bin_path.] ***********************************************************************
+ok: [appdb1]
+
+TASK [geerlingguy.postgresql : Define postgresql_config_path.] ********************************************************************
+ok: [appdb1]
+
+TASK [geerlingguy.postgresql : Define postgresql_unix_socket_directories_mode.] ***************************************************
+ok: [appdb1]
+
+TASK [geerlingguy.postgresql : include_tasks] *************************************************************************************
+included: /home/student1/web_role/roles/geerlingguy.postgresql/tasks/setup-RedHat.yml for appdb1
+
+TASK [geerlingguy.postgresql : Ensure PostgreSQL packages are installed.] *********************************************************
+ok: [appdb1]
+
+TASK [geerlingguy.postgresql : Ensure PostgreSQL Python libraries are installed.] *************************************************
+ok: [appdb1]
+
+TASK [geerlingguy.postgresql : include_tasks] *************************************************************************************
+skipping: [appdb1]
+
+TASK [geerlingguy.postgresql : include_tasks] *************************************************************************************
+included: /home/student1/web_role/roles/geerlingguy.postgresql/tasks/initialize.yml for appdb1
+
+TASK [geerlingguy.postgresql : Set PostgreSQL environment variables.] *************************************************************
+ok: [appdb1]
+
+TASK [geerlingguy.postgresql : Ensure PostgreSQL data directory exists.] **********************************************************
+ok: [appdb1]
+
+TASK [geerlingguy.postgresql : Check if PostgreSQL database is initialized.] ******************************************************
+ok: [appdb1]
+
+TASK [geerlingguy.postgresql : Ensure PostgreSQL database is initialized.] ********************************************************
+skipping: [appdb1]
+
+TASK [geerlingguy.postgresql : include_tasks] *************************************************************************************
+included: /home/student1/web_role/roles/geerlingguy.postgresql/tasks/configure.yml for appdb1
+
+TASK [geerlingguy.postgresql : Configure global settings.] ************************************************************************
+ok: [appdb1] => (item={u'option': u'unix_socket_directories', u'value': u'/var/run/postgresql'})
+
+TASK [geerlingguy.postgresql : Configure host based authentication (if entries are configured).] **********************************
+ok: [appdb1]
+
+TASK [geerlingguy.postgresql : Ensure PostgreSQL unix socket dirs exist.] *********************************************************
+changed: [appdb1] => (item=/var/run/postgresql)
+
+TASK [geerlingguy.postgresql : Ensure PostgreSQL is started and enabled on boot.] *************************************************
+ok: [appdb1]
+
+TASK [geerlingguy.postgresql : Ensure PostgreSQL users are present.] **************************************************************
+
+TASK [geerlingguy.postgresql : Ensure PostgreSQL databases are present.] **********************************************************
+
+PLAY RECAP ************************************************************************************************************************
+app1                       : ok=9    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+app2                       : ok=9    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+appdb1                     : ok=23   changed=1    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0
+frontend1                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+support1                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+````
+</p></details>
