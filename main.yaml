@@ -12,7 +12,7 @@
     - {name: deploy_haproxy, tags: deploy_haproxy}
 
 - hosts: apps
-  gather_facts: false
+  gather_facts: true
   become: true
   roles:
     - {name: deploy_tomcat, tags: deploy_tomcat}
