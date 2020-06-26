@@ -2,7 +2,7 @@
 bastion # ansible_host=bastion."{{ GUID }}".example.opentlc.com
 
 [frontends]
-frontend1 ansible_host=frontend1."{{ GUID }}".internal
+frontend1 ansible_host=frontend1."{{ GUID }}".example.opentlc.com
 
 [apps]
 app1 ansible_host=app1."{{ GUID }}".example.opentlc.com
